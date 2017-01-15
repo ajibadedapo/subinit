@@ -46,6 +46,7 @@ class PagesController extends Controller
         $page = Input::get('page', 1); // Get the current page or default to 1, this is what you miss!
         $perPage = 30;
         $offset = ($page * $perPage) - $perPage;
+        //contents of the users you re subscribed to
         $content =  new LengthAwarePaginator(array_slice($thecontent, $offset, $perPage, true), count($thecontent), $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
         return view('feed')->withContent($content);
     }
