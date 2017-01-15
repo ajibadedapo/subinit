@@ -11,6 +11,9 @@ use App\User;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
 
 class PagesController extends Controller
 {
@@ -18,9 +21,32 @@ class PagesController extends Controller
     {
         $this->middleware('auth', ['except'=> array()]);
     }
-    public function feed()
+    public function feed(Request $request)
     {
-        $content=Content::orderBy('created_at', 'desc')->paginate(30);
+        $subcon=array();$subconid=array();$f=0;$g=0;
+        $subscribe=Subscriber::where('subscriber', Auth::id())->get();
+        foreach ($subscribe as $subscribes)
+        {
+            $subcon[$f]= Content::where('user_id',User::find($subscribes->subscribee)->id)->orderBy('created_at', 'desc')->get();
+            foreach ($subcon[$f] as $subcons)
+            {
+                $subconid[$g]=$subcons->id;
+                $g++;
+            }
+            $f++;
+        }
+        $thecontent=array();
+        $u=0;
+        foreach ($subconid as $subconids)
+        {
+            $thecontent[$u]=Content::find($subconids);
+            $u++;
+        }
+
+        $page = Input::get('page', 1); // Get the current page or default to 1, this is what you miss!
+        $perPage = 30;
+        $offset = ($page * $perPage) - $perPage;
+        $content =  new LengthAwarePaginator(array_slice($thecontent, $offset, $perPage, true), count($thecontent), $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
         return view('feed')->withContent($content);
     }
 
