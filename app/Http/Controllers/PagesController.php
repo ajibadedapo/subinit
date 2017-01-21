@@ -74,8 +74,9 @@ class PagesController extends Controller
         $userjobs=DB::table('jobs_users')->where('user_id', $user->id)->get();
         $subscribing=Subscriber::where('subscriber',$user->id)->get();//follow row where i'm the follower
         $subscriber =Subscriber::where('subscribee',$user->id)->get();//follow row where i'm the followee
+        $mysubscribing= Subscriber::where('subscriber', Auth::user()->id)->where('subscribee',$user->id)->first();
         return view('user_profile')->withUser($user)->withBenefits($benefits)->withContent($content)
-            ->withSubscribing($subscribing)->withSubscriber($subscriber)->withUserjobs($userjobs);
+            ->withSubscribing($subscribing)->withMysubscribing($mysubscribing)->withSubscriber($subscriber)->withUserjobs($userjobs);
     }
 
     public function search(Request $request)
@@ -91,6 +92,10 @@ class PagesController extends Controller
         $content_id= $id;
         $contents=Content::find($content_id);
         return view('comment')->withContent_id($content_id)->withContents($contents);
-
     }
+    public function registerforpayment()
+    {
+        return view('subscription.registerforpayment');
+    }
+    
 }

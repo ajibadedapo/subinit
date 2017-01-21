@@ -14,5 +14,6 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
              'upload',
              'crop',
+             'account/stripe_card_token',
     ];
 }

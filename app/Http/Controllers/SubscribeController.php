@@ -57,6 +57,16 @@ class SubscribeController extends Controller
         $notify->save();*/
         return response()->json(['subscribing'=> 1]);
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function unsubscribe(Request $request)
+    {
+        Subscriber::where('subscriber',Auth::id())->where('subscribee',$request->subscribee)->delete();
+    }
 
     /**
      * Display the specified resource.

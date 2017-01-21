@@ -50,7 +50,7 @@ Route::post('editbenefits', 'ProfileController@editbenefits');
 
 Route::post('updatejob', 'ProfileController@updatejob');
 
-Route::post('subscribe', 'SubscribeController@store')->name('subscribe');
+Route::post('unsubscribe', 'SubscribeController@unsubscribe')->name('subscribe');
 
 Route::get('downloadpdf', 'ContentController@downloadpdf');
 
@@ -67,6 +67,25 @@ Route::post('storecomment', 'CommentController@storecomment');
 Route::post('storereply', 'CommentController@storereply');
 
 Route::get('logout', 'Auth\LoginController@logout');
+
+Route::group(['prefix'=> 'subscription'], function()
+{
+    Route::get('/', [
+        'as'=> 'subscriptionform',
+        'uses'=> 'SubscriptionController@getSubForm'
+    ]);
+    Route::get('/f', [
+        'as'=> 'subscription',
+        'uses'=> 'SubscriptionController@getIndex'
+    ]);
+});
+
+Route::post('account/stripe_card_token', 'SubscriptionController@join');
+
+Route::get('registerforpayment', 'PagesController@registerforpayment');
+
+Route::post('registerforpayment', 'SubscriptionController@registerforpayment');
+
 
 
 

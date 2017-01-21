@@ -1,6 +1,7 @@
 @extends('main')
    @section('content')
        <div class="row" style="margin: 0 5px;">
+
            <div class="col-md-12 " id="coverarea" style="background: @if($user->cover_photo) url('/uploads/{{$user->cover_photo}}') @else url('/images/default_cover_photo.jpg') @endif no-repeat; background-size: cover ">
                <img class="col-md-12 img-responsive img-circle" style="max-height: 200px; max-width: 200px; display: block ;padding: 14px;" src="@if($user->profile_photo){{URL::asset('/uploads/'.$user->profile_photo)}} @else {{URL::asset('/images/default_photo.png')}} @endif"/>
 
@@ -16,9 +17,15 @@
            </div>
            <div class="row">
                <p>
-                   <?php $subscribing= \App\Subscriber::where('subscriber',Auth::id())->where('subscribee',$user->id)->first();?>
-                   <button style="margin-right: 30px;display: inline;" @if($subscribing) class="btn btn-primary subs subscribe"  @else class="btn subs  btn-default subscribe" @endif @if($subscribing) data-subscribing="1" @else data-subscribing="0"  @endif data-subscribe="{{$user->id}}">@if($subscribing) Unsubscribe @else Subscribe @endif</button>
-                      <div class="col-sm-4"> {{ count($subscriber)}} Subscribers</div>
+              @if(($user->lpk)&&($user->lsk))
+                  {{--{{$user->}}--}}
+               @if(count($mysubscribing)<1)
+                       <a style="margin-right: 30px;display: inline;" href="/subscription?recid={{$user->id}}"  class="btn subs  btn-default subscribe">Subscribe</a>
+                     @else
+                           <a style="margin-right: 30px;display: inline;" data-unsubscribe="{{$user->id}}"  class="btn subs  btn-primary unsubscribe">Cancel Subscription</a>
+                   @endif
+               @endif
+               <div class="col-sm-4"> {{ count($subscriber)}} Subscribers</div>
                    <button style="/*margin-right: 19px;*/display: inline; float: right;" class="shareprofilebtn  btn-lg"> Message</button>
                {{--<br/>--}}
                    <p style="float: right" data-toggle="modal" data-target="#priceupdateModal" ><button style="/*margin: 19px;*/display: inline;  border-radius: 30px;" class="btn-primary  btn-lg" id="pricebtn"> <i class="fa fa-dollars"></i>@if(isset($user->price)) $ <span class="newprice">{{$user->price}}</span> @else <span class="newprice">???</span> @endif/<span style="font-size: 70%">month</span></button></p>
@@ -78,6 +85,6 @@
        <script>
            var token ='{{csrf_token()}}';
        </script>
-       <script src="{{URL::asset('js/ajax/subscribe.js')}}"></script>
 
+       <script src="{{URL::asset('js/ajax/unsubscribe.js')}}"></script>
        @endsection

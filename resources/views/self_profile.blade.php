@@ -8,6 +8,11 @@
        <script src="{{URL::asset('js/selectindex.js')}}" type="text/javascript"></script>
 
        <div class="row" style="margin: 0 5px;">
+           @if(Session::has('registerforpayment'))
+           <div class="alert alert-warning fade in" style="margin-bottom: 5px; text-align: center">
+                 Your Payment settings has been updated
+               </div>
+               @endif
            <div class="col-md-12 " id="coverarea" style="background: @if(Auth::user()->cover_photo) url('/uploads/{{Auth::user()->cover_photo}}') @else url('/images/default_cover_photo.jpg') @endif   no-repeat; background-size: cover ">
                <img class="col-md-12 img-responsive img-circle" style="max-height: 200px; max-width: 200px; display: block ;padding: 14px;"  src="@if($user->profile_photo){{URL::asset('/uploads/'.$user->profile_photo)}} @else {{URL::asset('/images/default_photo.png')}} @endif"/>
                <div id="dpcpbtn"{{-- style="display: none"--}}>    ,,,,,,,,

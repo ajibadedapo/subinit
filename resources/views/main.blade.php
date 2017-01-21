@@ -54,6 +54,7 @@
 c						<li><a href="gallery.html" data-hover="Gallery">Gallery</a></li>--}}
 						<li><a class="@if(Route::is('profile')) active @endif" href="/profile" data-hover="Profile">Profile</a></li>
 						 <li><a href="/logout" data-hover="Logout">Logout</a></li>
+						 <li><a href="/registerforpayment" data-hover="Payment">Payment</a></li>
 					 </ul>
 				 </nav>
 					<!-- script-for-menu -->

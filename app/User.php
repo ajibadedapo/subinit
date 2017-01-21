@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Billable;
+
+    protected $dates=['trial_ends_at', 'subscription_ends_at'];
+/*    protected $cardUpFront = false;*/
 
     /**
      * The attributes that are mass assignable.
