@@ -45,8 +45,8 @@
            <div class="row">
                <p>
                    <button style="margin-right: 30px;display: inline;" class="subs  btn-clear btn-lg"> {{\App\Subscriber::where('subscribee',Auth::id())->count()}} SUBSCRIBERS{{--{{ count($following)}}--}}</button>
-                   <button style="/*margin-right: 19px;*/display: inline; float: right;" class="shareprofilebtn  btn-lg"> Message
-                   </button>
+                   {{--<button style="/*margin-right: 19px;*/display: inline; float: right;" class="shareprofilebtn  btn-lg"> Message
+                   </button>--}}
                {{--<br/>--}}
                    <p style="float: right" data-toggle="modal" data-target="#priceupdateModal" ><a  style="color: #999; font-size: 90%;cursor: pointer"  class="editprice">  Edit <i class="fa fa-edit"></i></a><button style="/*margin: 19px;*/display: inline;  border-radius: 30px;" class="btn-primary  btn-lg" id="pricebtn"> <i class="fa fa-dollars"></i>@if(isset($user->price)) $ <span class="newprice">{{$user->price}}</span> @else <span class="newprice">???</span> @endif/<span style="font-size: 70%">month</span></button></p>
 

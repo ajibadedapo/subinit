@@ -32,7 +32,7 @@
             </div>
             </form>
                 <div class="box vid_upload_finish" style="color: #1CD139; display: none;" >Congratulations! Your video was successfully uploaded!</div>
-                <div class="box vid_upload_progress" style="color: #2196f3; display: none;" >Uploading Video .......</div>
+                <div class="box vid_upload_progress" style="color: #2196f3; display: none;" >Uploading Video <i class="fa fa-spinner fa-pulse"></i></div>
             <div class="clearfix"></div>
         </div>
     </div>

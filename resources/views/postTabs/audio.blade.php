@@ -32,7 +32,7 @@
                 </div>
             </form>
             <div class="box audio_upload_finish" style="color: #1CD139; display: none;" >Congratulations! Your Audio was successfully uploaded!</div>
-            <div class="box audio_upload_progress" style="color: #2196f3; display: none;" >Uploading Audio  .......</div>
+            <div class="box audio_upload_progress" style="color: #2196f3; display: none;" >Uploading Audio  <i class="fa fa-spinner fa-pulse"></i></div>
             <div class="clearfix"></div>
         </div>
     </div>

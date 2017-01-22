@@ -16,6 +16,10 @@
                </div>
            </div>
            <div class="row">
+               <a hidden style="margin-right: 30px;display: inline;" href="/subscription?recid={{$user->id}}"  class="btn subs hiddensub  btn-default subscribe">Subscribe</a>
+               <script>
+                   $('.hiddensub').hide();
+               </script>
                <p>
               @if(($user->lpk)&&($user->lsk))
                   {{--{{$user->}}--}}
@@ -26,7 +30,9 @@
                    @endif
                @endif
                <div class="col-sm-4"> {{ count($subscriber)}} Subscribers</div>
+{{--
                    <button style="/*margin-right: 19px;*/display: inline; float: right;" class="shareprofilebtn  btn-lg"> Message</button>
+--}}
                {{--<br/>--}}
                    <p style="float: right" data-toggle="modal" data-target="#priceupdateModal" ><button style="/*margin: 19px;*/display: inline;  border-radius: 30px;" class="btn-primary  btn-lg" id="pricebtn"> <i class="fa fa-dollars"></i>@if(isset($user->price)) $ <span class="newprice">{{$user->price}}</span> @else <span class="newprice">???</span> @endif/<span style="font-size: 70%">month</span></button></p>
 

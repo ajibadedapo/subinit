@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <p><h2>Crop Cover Photos</h2></p>
             <div class="">
-                <button class="btn btn-primary save" style="padding: 7px 40px; text-align: center;">Save <i class="fa fa-save"></i></button>
+                <button class="btn btn-block btn-primary save" style="padding: 7px 40px; text-align: center;">Save <i class="fa fa-save"></i></button>
             </div>
          <div style="margin: 0 auto; display: block">
         <img src="{{URL::asset($image)}} " id="cropimage">

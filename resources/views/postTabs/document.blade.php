@@ -32,7 +32,7 @@
                 </div>
             </form>
             <div class="box document_upload_finish" style="color: #1CD139; display: none;" >Congratulations! Your Document was successfully uploaded!</div>
-            <div class="box document_upload_progress" style="color: #2196f3; display: none;" >Uploading Document  .......</div>
+            <div class="box document_upload_progress" style="color: #2196f3; display: none;" >Uploading Document  <i class="fa fa-spinner fa-pulse"></i></div>
             <div class="clearfix"></div>
         </div>
     </div>

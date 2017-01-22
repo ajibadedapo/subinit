@@ -32,7 +32,7 @@
                 </div>
             </form>
             <div class="box photo_upload_finish" style="color: #1CD139; display: none;" >Congratulations! Your Picture was successfully uploaded!</div>
-            <div class="box photo_upload_progress" style="color: #2196f3; display: none;" >Uploading Picture .......</div>
+            <div class="box photo_upload_progress" style="color: #2196f3; display: none;" >Uploading Picture <i class="fa fa-spinner fa-pulse"></i></div>
             <div class="clearfix"></div>
         </div>
     </div>

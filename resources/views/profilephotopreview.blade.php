@@ -8,8 +8,8 @@
         <div class="col-md-12">
             <p><h2>Crop Profile Photos</h2></p>
             <div class="">
-                <button class="btn btn-primary save" style="padding: 7px 40px; text-align: center;">Save <i class="fa fa-save"></i></button>
-            </div>
+                <button class="btn btn-block btn-primary save" style="padding: 7px 40px; text-align: center;">Save <i class="fa fa-save"></i></button>
+            </div>s
          <div style="margin: 0 auto; display: block">
         <img src="{{URL::asset($image)}} " id="cropimage">
         <form action="{{url('/jcrop')}}" enctype="multipart/form-data" method="post" >
